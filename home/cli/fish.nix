@@ -1,4 +1,4 @@
-{ colors, pkgs, inputs, lib, ... }: {
+{ pkgs, inputs, lib, ... }: {
   home.packages =
     [ pkgs.fishPlugins.autopair inputs.grc-rs.packages.${pkgs.system}.default ];
   programs.zoxide = {
@@ -93,35 +93,6 @@
       set -g __fish_git_alias_dump cat-file
     '';
   };
-
-  xdg.configFile."fish/themes/theme.theme".text = ''
-    fish_color_normal ${colors.text}
-    fish_color_command ${colors.blue}
-    fish_color_param ${colors.pink}
-    fish_color_keyword ${colors.flamingo}
-    fish_color_quote ${colors.blue}
-    fish_color_redirection ${colors.mauve}
-    fish_color_end ${colors.peach}
-    fish_color_comment ${colors.overlay0}
-    fish_color_error ${colors.red}
-    fish_color_gray ${colors.overlay0}
-    fish_color_selection --background=${colors.surface0}
-    fish_color_search_match --background=${colors.surface0}
-    fish_color_option ${colors.green}
-    fish_color_operator ${colors.pink}
-    fish_color_escape ${colors.peach}
-    fish_color_autosuggestion ${colors.overlay0} -i
-    fish_color_cancel ${colors.red}
-    fish_color_cwd ${colors.yellow}
-    fish_color_user ${colors.teal}
-    fish_color_host ${colors.lavender}
-    fish_color_host_remote ${colors.green}
-    fish_color_status ${colors.maroon}
-    fish_pager_color_progress ${colors.overlay0}
-    fish_pager_color_prefix ${colors.mauve}
-    fish_pager_color_completion ${colors.text}
-    fish_pager_color_description ${colors.overlay0}
-  '';
 
   xdg.configFile."grc-rs" = {
     source = "${inputs.grc-rs.packages.${pkgs.system}.default}/etc/grc-rs";
