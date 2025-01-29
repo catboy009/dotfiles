@@ -1,28 +1,18 @@
-{ pkgs, inputs, config, ... }: {
-  imports = [
-    ./cli/git.nix
-    ./cli/fish.nix
-    ./cli/neovim.nix
-    ./cli/himalaya.nix
-
-    ./desktop/gtk.nix
-    ./desktop/sway.nix
-    ./desktop/dunst.nix
-  ];
+{ pkgs, lib, config, ... }: {
+  imports = [ ./cli/git.nix ./cli/fish.nix ./cli/neovim.nix ];
   home.stateVersion = "21.11";
   home.packages = with pkgs; [
-    inputs.wezterm.packages.${pkgs.system}.default
-    luakit
+    wezterm
+    iina
+    keka
     ripgrep
     pfetch-rs
-    rink
     thokr
     fd
     xq
     nodejs
     bun
     tlrc
-    theme
     # rust dev
     rustup
     pkg-config
@@ -30,14 +20,35 @@
     lld_19
     gcc
   ];
+  disabledModules = [ "targets/darwin/linkapps.nix" ];
+  home.activation = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+    copyApplications = let
+      apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = "/Applications";
+      };
+    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      baseDir="/Applications/Nix"
+      if [ -d "$baseDir" ]; then
+        rm -rf "$baseDir"
+      fi
+      mkdir -p "$baseDir"
+      for appFile in ${apps}/Applications/*; do
+        target="$baseDir/$(basename "$appFile")"
+        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+      done
+    '';
+  };
   xdg.configFile."wezterm" = {
     source = config.lib.file.mkOutOfStoreSymlink
-      "/home/catboy/.dotfiles/configs/wezterm";
+      "/Users/catboy/.dotfiles/configs/wezterm";
     recursive = true;
   };
   xdg.configFile."luakit" = {
     source = config.lib.file.mkOutOfStoreSymlink
-      "/home/catboy/.dotfiles/configs/luakit";
+      "/Users/catboy/.dotfiles/configs/luakit";
     recursive = true;
   };
 }

@@ -86,7 +86,6 @@ function keys.setup(config)
 		{ key = "Q", mods = "ALT", action = wezterm.action({ CloseCurrentTab = { confirm = false } }) },
 		{ key = "q", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 		{ key = "z", mods = "ALT", action = wezterm.action.TogglePaneZoomState },
-		{ key = "Enter", mods = "ALT", action = wezterm.action.ToggleFullScreen },
 
 		{ key = "[", mods = "ALT", action = wezterm.action({ ActivateTabRelative = -1 }) },
 		{ key = "]", mods = "ALT", action = wezterm.action({ ActivateTabRelative = 1 }) },
@@ -94,8 +93,9 @@ function keys.setup(config)
 		{ key = "}", mods = "SHIFT|ALT", action = wezterm.action.MoveTabRelative(1) },
 
 		{ key = "y", mods = "ALT", action = wezterm.action.ActivateCopyMode },
-		{ key = "c", mods = "CTRL|SHIFT", action = wezterm.action({ CopyTo = "Clipboard" }) },
-		{ key = "v", mods = "CTRL|SHIFT", action = wezterm.action({ PasteFrom = "Clipboard" }) },
+		{ key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
+		{ key = "c", mods = "CMD", action = wezterm.action({ CopyTo = "Clipboard" }) },
+		{ key = "v", mods = "CMD", action = wezterm.action({ PasteFrom = "Clipboard" }) },
 
 		{ key = "1", mods = "ALT", action = wezterm.action({ ActivateTab = 0 }) },
 		{ key = "2", mods = "ALT", action = wezterm.action({ ActivateTab = 1 }) },

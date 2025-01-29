@@ -31,7 +31,7 @@
 
   xdg.configFile."nvim" = {
     source =
-      config.lib.file.mkOutOfStoreSymlink "/home/catboy/.dotfiles/configs/nvim";
+      config.lib.file.mkOutOfStoreSymlink "/Users/catboy/.dotfiles/configs/nvim";
     recursive = true;
   };
 }

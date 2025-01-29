@@ -2,26 +2,22 @@
   description = "Nix Environment";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
-    nixos-apple-silicon = {
-      url = "github:zzywysm/nixos-asahi";
+    darwin = {
+      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     grc-rs = {
-      url = "github:catboy/grc-rs";
+      url = "github:catboy009/grc-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
       themes = {
         dark = {
@@ -83,16 +79,26 @@
           crust = "ebebeb";
         };
       };
-      colors = themes.dark;
+      colors = themes.light;
     in {
-      nixosConfigurations."kitaro" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = { inherit inputs colors; };
-        modules = [
-          ./hosts/kitaro
-          ./hosts/common
-          home-manager.nixosModules.home-manager
-        ];
-      };
+    darwinConfigurations."catbook" = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./hosts/catbook.nix
+        home-manager.darwinModules.home-manager
+        ({ ... }: {
+          nix.registry.nixpkgs.flake = inputs.nixpkgs;
+          services.nix-daemon.enable = true;
+          security.pam.enableSudoTouchIdAuth = true;
+          nixpkgs.config.allowUnfree = true;
+          home-manager = {
+	    extraSpecialArgs = { inherit inputs colors; };
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.catboy.imports = [ ./home ];
+          };
+        })
+      ];
+    };
     };
 }

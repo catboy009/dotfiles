@@ -40,30 +40,22 @@
           lib.getExe pkgs.eza
         } --icons -s type -a --git -T -I '.git|node_modules|.next'";
       top = "${lib.getExe pkgs.htop}";
-      img = "${lib.getExe pkgs.timg}";
       cp = "cp -r";
       rm = "rm -r";
       du = "grc-rs du -h";
       df = "grc-rs df -h";
-      iw = "iwctl station wlan0";
       find = "fd";
       grep = "rg";
-      copy = "wl-copy";
+      copy = "pbcopy";
       ":q" = "exit";
       ":h" = "man";
-      mou = "sudo mount -o uid=catboy,gid=users --mkdir";
       mkdir = "mkdir -p";
-      nr = "sudo nixos-rebuild switch --flake ~/.dotfiles#kitaro";
-      ns = "${lib.getExe pkgs.nh} search";
+      nr = "darwin-rebuild switch --flake ~/.dotfiles#catbook";
       ipinfo = "curl -s ipinfo.io | xq";
       c = "clear";
       g = "git";
     };
     shellInit = ''
-      set TTY1 (tty)
-      [ "$TTY1" = "/dev/tty1" ] && exec sway
-      fish_config theme choose theme
-
       set fish_greeting
       set -gx EDITOR (which nvim)
       set -gx VISUAL $EDITOR
