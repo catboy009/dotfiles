@@ -24,7 +24,7 @@
 
   system.keyboard = {
     enableKeyMapping = true;
-    remapCapsLockToControl = true;
+    remapCapsLockToControl = false;
     nonUS.remapTilde = true;
   };
 
@@ -51,7 +51,7 @@
       NSDocumentSaveNewDocumentsToCloud = false;
       NSTableViewDefaultSizeMode = 1;
       AppleKeyboardUIMode = 3;
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
       InitialKeyRepeat = 10;
       KeyRepeat = 1;
     };

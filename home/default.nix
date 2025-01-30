@@ -5,6 +5,7 @@
     wezterm
     iina
     keka
+    aerospace
     ripgrep
     pfetch-rs
     thokr
@@ -18,7 +19,6 @@
     pkg-config
     gnumake
     lld_19
-    gcc
   ];
   disabledModules = [ "targets/darwin/linkapps.nix" ];
   home.activation = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
