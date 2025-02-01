@@ -18,6 +18,7 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.yaml-language-server
+      tailwindcss-language-server
 
       dprint
       nil
@@ -30,8 +31,8 @@
   };
 
   xdg.configFile."nvim" = {
-    source =
-      config.lib.file.mkOutOfStoreSymlink "/Users/catboy/.dotfiles/configs/nvim";
+    source = config.lib.file.mkOutOfStoreSymlink
+      "/Users/catboy/.dotfiles/configs/nvim";
     recursive = true;
   };
 }

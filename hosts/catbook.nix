@@ -24,7 +24,7 @@
 
   system.keyboard = {
     enableKeyMapping = true;
-    remapCapsLockToControl = false;
+    remapCapsLockToControl = true;
     nonUS.remapTilde = true;
   };
 
@@ -35,7 +35,7 @@
       mru-spaces = false;
       minimize-to-application = true;
       show-recents = false;
-      tilesize = 30;
+      tilesize = 55;
       autohide = true;
     };
     finder = {

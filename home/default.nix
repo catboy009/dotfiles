@@ -5,7 +5,6 @@
     wezterm
     iina
     keka
-    aerospace
     ripgrep
     pfetch-rs
     thokr
