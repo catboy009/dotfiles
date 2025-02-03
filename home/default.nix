@@ -86,8 +86,7 @@
     alt-shift-k = 'move up'
     alt-shift-l = 'move right'
 
-    alt-shift-minus = 'resize smart -50'
-    alt-shift-equal = 'resize smart +50'
+    alt-equal = 'flatten-workspace-tree'
 
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
@@ -112,6 +111,15 @@
     alt-tab = 'workspace-back-and-forth'
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-    alt-shift-space = 'layout floating tiling'
+    alt-d = 'layout floating tiling'
+
+    alt-r = 'mode resize'
+
+    [mode.resize.binding]
+    esc = 'mode main'
+    h = ['resize width -50']
+    j = ['resize height -50']
+    k = ['resize height +50']
+    l = ['resize width +50']
   '';
 }
