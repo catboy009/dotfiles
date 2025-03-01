@@ -1,4 +1,4 @@
-{ inputs, colors, ... }: {
+{ inputs, colors, pkgs, ... }: {
   imports = [
     ./console.nix
     ./networking.nix
@@ -30,6 +30,12 @@
     };
   };
   nixpkgs.config.allowUnfree = true;
+
+  fonts.packages = with pkgs; [
+    noto-fonts-emoji
+    noto-fonts
+    noto-fonts-cjk-sans
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 
