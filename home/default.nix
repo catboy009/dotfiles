@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... }: {
+{ pkgs, config, ... }: {
   imports = [
     ./cli/git.nix
     ./cli/fish.nix
@@ -12,6 +12,7 @@
   home.stateVersion = "21.11";
   home.packages = with pkgs; [
     wezterm
+    luakit
     firefox
     ripgrep
     pfetch-rs
