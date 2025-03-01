@@ -91,6 +91,7 @@
 
         "${mod}+Return" = "exec wezterm";
         "${mod}+d" = "exec firefox";
+        "${mod}+t" = "exec ${lib.getExe pkgs.telegram-desktop}";
 
         "${mod}+n" = "exec ${pkgs.notifystatus}/bin/notifystatus";
 

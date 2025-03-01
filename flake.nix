@@ -2,18 +2,14 @@
   description = "Nix Environment";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-apple-silicon = {
-      url = "github:zzywysm/nixos-asahi";
+      url = "github:catboy009/nixos-asahi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grc-rs = {
