@@ -31,11 +31,7 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    noto-fonts-emoji
-    noto-fonts
-    noto-fonts-cjk-sans
-  ];
+  fonts.packages = with pkgs; [ noto-fonts-emoji noto-fonts-cjk-sans ];
 
   security.sudo.wheelNeedsPassword = false;
 

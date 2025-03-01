@@ -90,8 +90,8 @@
           } -a "full screen captured" "saved to ~/screenshots" -t 888'';
 
         "${mod}+Return" = "exec wezterm";
-        "${mod}+d" = "exec luakit";
-        "${mod}+Shift+d" = "exec firefox";
+        "${mod}+d" = "exec firefox";
+        "${mod}+Shift+d" = "exec luakit";
         "${mod}+t" = "exec ${lib.getExe pkgs.telegram-desktop}";
 
         "${mod}+n" = "exec ${pkgs.notifystatus}/bin/notifystatus";
