@@ -6,6 +6,7 @@
     ./locale.nix
     ./environment.nix
     ./bluetooth.nix
+    ./printing.nix
   ];
   nixpkgs.overlays = [ (import ../../overlays/binscripts.nix) ];
 
@@ -28,6 +29,7 @@
       tarball-ttl = 604800;
     };
   };
+  nixpkgs.config.allowUnfree = true;
 
   security.sudo.wheelNeedsPassword = false;
 
