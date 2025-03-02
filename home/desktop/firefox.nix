@@ -1,8 +1,28 @@
 { pkgs, colors, inputs, ... }: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.firefox.override {
+      nativeMessagingHosts = [ pkgs.tridactyl-native ];
+    };
   };
+  xdg.configFile."tridactyl/tridactylrc".text = ''
+    set modeindicator false
+    set hintchars etovxqpdygfblzhckisuran
+    set hintuppercase false
+    unbind w
+    unbind W
+    unbind t
+    unbind T
+    unbind s
+    unbind S
+    unbind p
+    unbind P
+    unbind o
+    unbind O
+    unbind :
+    unbind <c-f>
+    unbind <c-i>
+  '';
   programs.firefox.profiles = let
     userChrome = ''
       :root {
@@ -984,6 +1004,7 @@
           clearurls
           decentraleyes
           stylus
+          tridactyl
           istilldontcareaboutcookies
         ];
     };
