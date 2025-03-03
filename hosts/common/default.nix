@@ -33,6 +33,7 @@
 
   fonts.packages = with pkgs; [ noto-fonts-emoji noto-fonts-cjk-sans ];
 
+  security.pam.services.waylock = { };
   security.sudo.wheelNeedsPassword = false;
 
   services = {

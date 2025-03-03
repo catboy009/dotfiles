@@ -1,6 +1,6 @@
 { pkgs, lib, colors, ... }: {
   home = {
-    packages = with pkgs; [ wl-clipboard xdg-utils ];
+    packages = with pkgs; [ waylock wl-clipboard xdg-utils ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       DISABLE_QT5_COMPAT = "0";
@@ -52,6 +52,14 @@
           pointer_accel = "0.47";
         };
       };
+      startup = [{
+        command = ''
+          ${lib.getExe pkgs.swayidle} -w \
+            timeout 900 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389' \
+            before-sleep 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389'
+        '';
+        always = true;
+      }];
       bars = lib.mkForce [ ];
       defaultWorkspace = "workspace 1";
       keybindings = let
@@ -61,9 +69,11 @@
           "${mod}+${toString i}" = "exec 'swaymsg workspace ${toString i}'";
           "${mod}+Shift+${toString i}" =
             "exec 'swaymsg move container to workspace ${toString i}'";
-        }) (lib.range 1 9));
+        }) (lib.range 0 9));
       in tagBinds // {
         "${mod}+o" = "exec ${lib.getExe pkgs.hyprpicker} -a -n";
+        "XF86PowerOff" =
+          "exec waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389";
 
         "${mod}+p" = ''
           exec ${lib.getExe pkgs.grim} -g "$(${
