@@ -613,6 +613,11 @@
         .perf-photon-button-primary:hover { background-color: #${colors.surface1} !important; }
         .devtools-tab-line { display: none !important; }
       }
+      @-moz-document regexp("^file://.*\\.(png|jpe?g|gif|bmp|webp|svg)$") {
+          :root {
+              background: #${colors.base} !important;
+          }
+      }
     '';
 
     settings = {
