@@ -55,8 +55,8 @@
       startup = [{
         command = ''
           ${lib.getExe pkgs.swayidle} -w \
-            timeout 900 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389' \
-            before-sleep 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389'
+            timeout 900 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x${colors.base} -input-alt-color 0x${colors.base} -fail-color 0x${colors.red}' \
+            before-sleep 'waylock -ignore-empty-password -init-color 0x000000 -input-color 0x${colors.base} -input-alt-color 0x${colors.base} -fail-color 0x${colors.red}'
         '';
         always = true;
       }];
@@ -73,7 +73,7 @@
       in tagBinds // {
         "${mod}+o" = "exec ${lib.getExe pkgs.hyprpicker} -a -n";
         "XF86PowerOff" =
-          "exec waylock -ignore-empty-password -init-color 0x000000 -input-color 0x161616 -input-alt-color 0x161616 -fail-color 0xff8389";
+          "exec waylock -ignore-empty-password -init-color 0x000000 -input-color 0x${colors.base} -input-alt-color 0x${colors.base} -fail-color 0x${colors.red}";
 
         "${mod}+p" = ''
           exec ${lib.getExe pkgs.grim} -g "$(${
