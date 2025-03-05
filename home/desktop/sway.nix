@@ -175,7 +175,8 @@
       };
       seat = { "*".hide_cursor = "when-typing enable"; };
       output = {
-        "*".bg = "#${colors.mantle} solid_color";
+        # "*".bg = "#${colors.mantle} solid_color";
+        "*".bg = "${../../configs/wallpaper.png} fill";
         "eDP-1".scale = "1";
       };
     };
