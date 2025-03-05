@@ -14,6 +14,7 @@
   home.packages = with pkgs; [
     wezterm
     luakit
+    libreoffice
     ripgrep
     neofetch
     rink
@@ -24,6 +25,7 @@
     bun
     tlrc
     theme
+    extract
     # rust dev
     rustup
     pkg-config

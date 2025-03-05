@@ -103,6 +103,7 @@
         "${mod}+d" = "exec firefox";
         "${mod}+Shift+d" = "exec luakit";
         "${mod}+t" = "exec ${lib.getExe pkgs.telegram-desktop}";
+        "${mod}+Shift+t" = "exec ${lib.getExe pkgs.libreoffice}";
 
         "${mod}+n" = "exec ${pkgs.notifystatus}/bin/notifystatus";
 
