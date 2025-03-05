@@ -15,7 +15,7 @@
     wezterm
     luakit
     ripgrep
-    pfetch-rs
+    neofetch
     rink
     thokr
     fd
