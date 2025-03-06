@@ -74,6 +74,8 @@
         "${mod}+o" = "exec ${lib.getExe pkgs.hyprpicker} -a -n";
         "XF86PowerOff" =
           "exec waylock -ignore-empty-password -init-color 0x000000 -input-color 0x${colors.base} -input-alt-color 0x${colors.base} -fail-color 0x${colors.red}";
+        "${mod}+XF86PowerOff" = "exec sudo systemctl poweroff";
+        "${mod}+Alt+XF86PowerOff" = "exec sudo systemctl reboot";
 
         "${mod}+p" = ''
           exec ${lib.getExe pkgs.grim} -g "$(${
@@ -175,8 +177,8 @@
       };
       seat = { "*".hide_cursor = "when-typing enable"; };
       output = {
-        # "*".bg = "#${colors.mantle} solid_color";
-        "*".bg = "${../../configs/wallpaper.png} fill";
+        # "*".bg = "${../../configs/wallpaper.png} fill";
+        "*".bg = "#${colors.mantle} solid_color";
         "eDP-1".scale = "1";
       };
     };
