@@ -5,7 +5,7 @@ in {
     enable = true;
     font = {
       name = "CartographCF Nerd Font";
-      size = 15;
+      size = 12;
     };
     theme = {
       name = "phocus";

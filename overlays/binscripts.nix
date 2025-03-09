@@ -53,7 +53,7 @@ final: prev: {
     if [ $(cat /sys/class/power_supply/macsmc-battery/status) = 'Charging' ]; then
       battery_status='(charging)'
     fi
-    date=$(date +'%A, %#d %b %H:%M')
+    date=$(date +'%A, %#d %B %H:%M')
 
     ${prev.libnotify}/bin/notify-send -r 69 \
         -a "''${date,,}" "battery at $battery $battery_status" \

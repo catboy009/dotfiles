@@ -305,23 +305,23 @@
       #TabsToolbar {display: none !important;}
 
       #nav-bar {
-         min-height: 48px !important;
+         min-height: 38px !important;
       }
 
         #urlbar {
-          min-height: 36px !important; /* Adjusted for centering */
-          line-height: 36px !important; /* Matches height to center text */
+          min-height: 26px !important; /* Adjusted for centering */
+          line-height: 26px !important; /* Matches height to center text */
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
         }
 
       :root:not([inFullscreen]){
-        --uc-bottom-toolbar-height: 48px !important;
+        --uc-bottom-toolbar-height: 38px !important;
       }
 
       :root[uidensity="compact"]:not([inFullscreen]){
-        --uc-bottom-toolbar-height: 48px !important;
+        --uc-bottom-toolbar-height: 38px !important;
       }
     '';
     userContent = ''
