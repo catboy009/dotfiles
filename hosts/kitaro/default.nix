@@ -26,8 +26,6 @@
     kernelParams = [ "apple_dcp.show_notch=1" ];
     loader.efi.canTouchEfiVariables = false;
     m1n1CustomLogo = ./bootlogo_256.png;
-    initrd.services.udev.rules = ''
-      SUBSYSTEM=="power_supply", KERNEL=="macsmc-battery", ATTR{charge_control_end_threshold}="90"'';
   };
 
   networking.hostName = "kitaro";
