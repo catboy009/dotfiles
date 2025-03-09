@@ -7,15 +7,17 @@ in {
       name = "CartographCF Nerd Font";
       size = 12;
     };
-    theme = {
+    theme = if is_dark == 1 then {
       name = "phocus";
       package = pkgs.phocus-oxocarbon;
+    } else {
+      name = "Adwaita";
     };
     gtk2.configLocation = "/home/catboy/.config/gtk-2.0/gtkrc";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = is_dark;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = is_dark;
   };
-  xdg.configFile."gtk-4.0/gtk.css".text = ''
+  xdg.configFile."gtk-4.0/gtk.css".text = if is_dark == 1 then ''
     @define-color surface-strongest rgb(10, 10, 10);
     @define-color surface-strong rgb(20, 20, 20);
     @define-color surface-moderate rgb(28, 28, 28);
@@ -104,7 +106,8 @@ in {
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
     }
-  '';
+  '' else
+    "";
   xdg.configFile."gtk-3.0/gtk.css".text = ''
     window decoration {
       box-shadow: none;
